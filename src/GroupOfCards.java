@@ -26,6 +26,7 @@ public abstract class GroupOfCards {
 
     public GroupOfCards(int size) {
         this.size = size;
+        this.cards = new ArrayList<Card>(52);
     }
 
     /**
@@ -34,18 +35,18 @@ public abstract class GroupOfCards {
      * @return the group of cards.
      */
     public ArrayList<Card> getCards() {
-        return cards;
+        return this.cards;
     }
 
     public void shuffle() {
-        Collections.shuffle(cards);
+        Collections.shuffle(this.cards);
     }
 
     /**
      * @return the size of the group of cards
      */
     public int getSize() {
-        return size;
+        return this.size;
     }
 
     /**
@@ -56,7 +57,7 @@ public abstract class GroupOfCards {
     }
 
     public Card remove(Card card) {
-        cards.remove(card);
+        this.cards.remove(card);
         return card;
     }
 

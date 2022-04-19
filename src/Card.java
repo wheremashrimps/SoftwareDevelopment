@@ -27,7 +27,11 @@ public class Card {
         HEARTS,
         SPADES,
         DIAMONDS,
-        CLUBS
+        CLUBS;
+
+        public Suit getSuit() {
+            return this;
+        }
     }
 
     public enum Rank {
@@ -43,7 +47,7 @@ public class Card {
         TEN,
         JACK,
         QUEEN,
-        KING
+        KING;
     }
 
     private final Suit suit;
@@ -58,8 +62,37 @@ public class Card {
         return suit;
     }
 
-    public Rank getRank() {
-        return rank;
+    public int getRank() {
+        switch (this.rank) {
+            case ACE:
+                return 1;
+            case TWO:
+                return 2;
+            case THREE:
+                return 3;
+            case FOUR:
+                return 4;
+            case FIVE:
+                return 5;
+            case SIX:
+                return 6;
+            case SEVEN:
+                return 7;
+            case EIGHT:
+                return 8;
+            case NINE:
+                return 9;
+            case TEN:
+                return 10;
+            case JACK:
+                return 11;
+            case QUEEN:
+                return 12;
+            case KING:
+                return 13;
+            default:
+                return 0;
+        }
     }
 
     @Override
