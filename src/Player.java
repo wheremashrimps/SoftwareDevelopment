@@ -5,17 +5,18 @@
  */
 
 /**
- * A class that models each Player in the game. Players have an identifier, which should be unique.
+ * A class that models each Player in the game. Players have an identifier,
+ * which should be unique.
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
- * //@modified by Team Shrimps
+ *         //@modified by Team Shrimps
  */
 public class Player {
 
-    private String name; //the unique name for this player
-    private Card hand; //the cards held by this player
-    private int score; //the player's score
+    private String name; // the unique name for this player
+    private Card hand; // the cards held by this player
+    private int score; // the player's score
 
     /**
      * A constructor that allows you to set the player's unique ID
@@ -27,7 +28,6 @@ public class Player {
         this.hand = new Card(null, null);
         this.score = 0;
     }
-
 
     /**
      * @return the player name
@@ -49,7 +49,7 @@ public class Player {
      * @return the player's hand
      */
     public Card getHand() {
-        if (this.hand == null) {
+        if (this.hand.getSuit() == null) {
             this.hand = new Card(null, null);
         }
         return hand;
@@ -67,7 +67,7 @@ public class Player {
      */
 
     public int getScore() {
-        return score;   
+        return score;
     }
 
     /**
@@ -88,8 +88,5 @@ public class Player {
         String hand = this.hand.getRank() + " of " + this.hand.getSuit();
         return hand;
     }
-
-    
-
 
 }

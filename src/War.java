@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import javax.swing.text.DefaultStyledDocument.ElementSpec;
+
 public class War extends Game {
 
     private DeckOfCards deck;
@@ -9,42 +11,56 @@ public class War extends Game {
         super(name);
         this.deck = new DeckOfCards(52);
         this.players = new ArrayList<Player>();
-        this.deck.generateDeck();
-        this.deck.shuffle();
+
     }
 
     @Override
     public void play() {
+
         for (int i = 0; i < 2; i++) {
             this.players.add(new Player("Player " + (i + 1)));
         }
-        runGame();
+        this.deck.generateDeck();
+        this.deck.shuffle();
 
     }
 
     @Override
     public void declareWinner() {
-        Player player1 = this.players.get(0);
-        Player player2 = this.players.get(1);
-        if (player1.getScore() > player2.getScore() && this.deck.getSize() == 0) {
-            System.out.println(player1.getName() + " wins with a score of " + player1.getScore());
-        } else if (player1.getScore() < player2.getScore() && this.deck.getSize() == 0) {
-            System.out.println(player2.getName() + " wins with a score of " + player2.getScore());
-        } 
+
+        if (players.get(0).getScore() > players.get(1).getScore()) {
+            System.out.println(players.get(0).getName() + " wins with a score of " + players.get(0).getScore());
+        } else if (players.get(1).getScore() > players.get(0).getScore()) {
+            System.out.println(players.get(1).getName() + " wins with a score of " + players.get(1).getScore());
+        }
     }
 
     public void runGame() {
+
         while (this.deck.getSize() > 0) {
-            declareWinner();
-            for (Player player : this.players) {
-                player.setHand(this.deck.remove());
+
+            players.get(0).setHand(deck.remove());
+            players.get(1).setHand(deck.remove());
+            System.out.println(players.get(0).getHand());
+            System.out.println(players.get(1).getHand());
+
+            if (players.get(0).getHand() != null && players.get(1).getHand() != null) {
+                if (players.get(0).getHand().getRank() > players.get(1).getHand().getRank()) {
+                    players.get(0).incrementScore();
+                    System.out.println(players.get(0).getScore());
+                    System.out.println(players.get(1).getScore());
+
+                } else if (players.get(0).getHand().getRank() < players.get(1).getHand().getRank()) {
+                    players.get(1).incrementScore();
+                    System.out.println(players.get(0).getScore());
+                    System.out.println(players.get(1).getScore());
+
+                }
+
             }
-            if (players.get(0).getHand().getRank() > players.get(1).getHand().getRank()) {
-                players.get(0).incrementScore();
-            } else if (players.get(0).getHand().getRank() < players.get(1).getHand().getRank()) {
-                players.get(1).incrementScore();
-            }
+
         }
+
     }
 
     public Card remove(Card card) {
