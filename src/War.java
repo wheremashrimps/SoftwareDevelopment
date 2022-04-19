@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import javax.swing.text.DefaultStyledDocument.ElementSpec;
-
 public class War extends Game {
 
     private DeckOfCards deck;

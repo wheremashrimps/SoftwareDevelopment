@@ -1,4 +1,3 @@
-import javax.swing.DefaultBoundedRangeModel;
 
 /**
  * SYST 17796 Project Base code.
