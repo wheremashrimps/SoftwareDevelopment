@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * SYST 17796 Project Base code.
  * Students can modify and extend to implement their game.
@@ -16,7 +14,7 @@ import java.util.ArrayList;
 public class Player {
 
     private String name; //the unique name for this player
-    private ArrayList<Card> hand; //the cards held by this player
+    private Card hand; //the cards held by this player
     private int score; //the player's score
 
     /**
@@ -26,7 +24,7 @@ public class Player {
      */
     public Player(String name) {
         this.name = name;
-        this.hand = new ArrayList<Card>();
+        this.hand = new Card(null, null);
         this.score = 0;
     }
 
@@ -50,14 +48,17 @@ public class Player {
     /**
      * @return the player's hand
      */
-    public ArrayList<Card> getHand() {
+    public Card getHand() {
+        if (this.hand == null) {
+            this.hand = new Card(null, null);
+        }
         return hand;
     }
 
     /**
      * @param hand the player's hand to set
      */
-    public void setHand(ArrayList<Card> hand) {
+    public void setHand(Card hand) {
         this.hand = hand;
     }
 
@@ -84,16 +85,8 @@ public class Player {
     }
 
     public String printHand() {
-        String handString = "";
-        for (Card card : hand) {
-            handString += card.toString() + " ";
-        }
-        return handString;
-    }
-
-
-    public void addCard(Card remove) {
-        hand.add(remove);
+        String hand = this.hand.getRank() + " of " + this.hand.getSuit();
+        return hand;
     }
 
     

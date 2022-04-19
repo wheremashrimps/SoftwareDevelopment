@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 //@modified by Team Shrimps
@@ -46,6 +45,15 @@ public class DeckOfCards extends GroupOfCards {
     @Override
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public Card remove() {
+        try {
+            this.cards.remove(0);
+            return cards.get(0);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }
